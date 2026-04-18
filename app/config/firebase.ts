@@ -2,16 +2,16 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { Platform } from 'react-native';
-
+require("dotenv").config();
 // Your Firebase configuration
 // Replace with your actual Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyD5tvcLU8KBty5RF-pPvk16d6Wcb6idGKM",
-  authDomain: "sanrakshaks.firebaseapp.com",
-  projectId: "sanrakshaks",
-  storageBucket: "sanrakshaks.firebasestorage.app",
-  messagingSenderId: "612204511011",
-  appId: "1:612204511011:web:046ee069afa091556d9696"
+  apiKey: process.env.FIREBASE_API_KEY as string,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN as string,
+  projectId: process.env.FIREBASE_PROJECT_ID as string,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET as string,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID as string,
+  appId: process.env.FIREBASE_APP_ID as string
 };
 
 // Initialize Firebase
@@ -24,3 +24,4 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 export { auth, db, app };
+export default firebaseConfig;
